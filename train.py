@@ -71,7 +71,6 @@ def train():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Training on device: {device}")
 
-    # Hardware specific adjustments
     batch_size = 16 
     epochs = 50
     lr = 0.001

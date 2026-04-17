@@ -51,18 +51,16 @@ if uploaded_files:
             with torch.no_grad():
                 voxel_probs = model(input_tensor)
                 
-            # Binarize probabilities at fixed threshold of 0.3 as per the paper
             voxel_grid = voxel_probs[0, 0].numpy()
             binary_voxels = (voxel_grid > 0.3).astype(np.float32)
 
-            # Extract coordinates for plotting
             x, y, z = np.where(binary_voxels == 1)
             
             fig = go.Figure(data=[go.Scatter3d(
                 x=x, y=y, z=z,
                 mode='markers',
                 
-                marker=dict(size=6, color=z, colorscale='inferno', opacity=0.9, symbol='square')
+                marker=dict(size=6, color=z, colorscale='magma', opacity=0.9, symbol='square')
             )])
 
             fig.update_layout(
@@ -78,3 +76,4 @@ if uploaded_files:
 
             st.success("Reconstruction Complete")
             st.plotly_chart(fig, use_container_width=True)
+
