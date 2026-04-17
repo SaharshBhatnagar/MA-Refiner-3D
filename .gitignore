@@ -1,0 +1,13 @@
+__pycache__/
+
+venv/
+
+ShapeNetRendering/
+ShapeNetVox32/
+
+weights/
+
+*.tgz
+
+binvox_rw.py
+
